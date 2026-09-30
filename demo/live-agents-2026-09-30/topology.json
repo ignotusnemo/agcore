@@ -1,0 +1,138 @@
+{
+  "captured_utc": "2026-09-30T12:11:42Z",
+  "host_network_namespace": "net:[4026531833]",
+  "backend_network_namespace": "net:[4026533219]",
+  "processes": [
+    {
+      "pid": 783547,
+      "ppid": 610616,
+      "executable": "/usr/bin/python3.12",
+      "network_namespace": "net:[4026533219]",
+      "argv": [
+        "python3",
+        "demo/video_backend.py",
+        "--fixture",
+        "/home/neo/rust/paranoid/target/live-tests/live-agents-20260930-a",
+        "--evidence",
+        "/home/neo/rust/paranoid/research/live_agents/results/2026-09-30",
+        "--reference",
+        "/home/neo/rust/paranoid/target/release/examples/isolated_v2_node",
+        "--executable",
+        "/home/neo/rust/agcore/target/isolated/agcore",
+        "--output",
+        "/home/neo/rust/agcore/target/video-run-20260930-3"
+      ]
+    },
+    {
+      "pid": 783550,
+      "ppid": 783547,
+      "executable": "/home/neo/rust/paranoid/target/release/examples/isolated_v2_node",
+      "network_namespace": "net:[4026533219]",
+      "argv": [
+        "/home/neo/rust/paranoid/target/release/examples/isolated_v2_node",
+        "--mode",
+        "node",
+        "--config",
+        "/home/neo/rust/agcore/target/video-run-20260930-3/reference-0/config.toml",
+        "--data-dir",
+        "/home/neo/rust/agcore/target/video-run-20260930-3/reference-0/data",
+        "--disable-dns-seeds",
+        "--p2p-listen",
+        "127.0.0.1:27900",
+        "--rpc-listen",
+        "127.0.0.1:27901",
+        "--log",
+        "info",
+        "--seed",
+        "127.0.0.1:27910"
+      ]
+    },
+    {
+      "pid": 783556,
+      "ppid": 783547,
+      "executable": "/home/neo/rust/paranoid/target/release/examples/isolated_v2_node",
+      "network_namespace": "net:[4026533219]",
+      "argv": [
+        "/home/neo/rust/paranoid/target/release/examples/isolated_v2_node",
+        "--mode",
+        "node",
+        "--config",
+        "/home/neo/rust/agcore/target/video-run-20260930-3/reference-1/config.toml",
+        "--data-dir",
+        "/home/neo/rust/agcore/target/video-run-20260930-3/reference-1/data",
+        "--disable-dns-seeds",
+        "--p2p-listen",
+        "127.0.0.1:27910",
+        "--rpc-listen",
+        "127.0.0.1:27911",
+        "--log",
+        "info",
+        "--seed",
+        "127.0.0.1:27900"
+      ]
+    },
+    {
+      "pid": 783706,
+      "ppid": 783547,
+      "executable": "/home/neo/rust/agcore/target/isolated/agcore",
+      "network_namespace": "net:[4026533219]",
+      "argv": [
+        "/home/neo/rust/agcore/target/isolated/agcore",
+        "--data-dir",
+        "/home/neo/rust/agcore/target/video-run-20260930-3/requester",
+        "--threads",
+        "2",
+        "--min-peers",
+        "2",
+        "--max-tip-age",
+        "86400",
+        "--peer",
+        "/ip4/127.0.0.1/tcp/27900",
+        "--peer",
+        "/ip4/127.0.0.1/tcp/27910"
+      ]
+    },
+    {
+      "pid": 783707,
+      "ppid": 783547,
+      "executable": "/home/neo/rust/agcore/target/isolated/agcore",
+      "network_namespace": "net:[4026533219]",
+      "argv": [
+        "/home/neo/rust/agcore/target/isolated/agcore",
+        "--data-dir",
+        "/home/neo/rust/agcore/target/video-run-20260930-3/provider",
+        "--threads",
+        "2",
+        "--min-peers",
+        "2",
+        "--max-tip-age",
+        "86400",
+        "--peer",
+        "/ip4/127.0.0.1/tcp/27900",
+        "--peer",
+        "/ip4/127.0.0.1/tcp/27910"
+      ]
+    },
+    {
+      "pid": 789225,
+      "ppid": 783547,
+      "executable": "/home/neo/rust/agcore/target/isolated/agcore",
+      "network_namespace": "net:[4026533219]",
+      "argv": [
+        "/home/neo/rust/agcore/target/isolated/agcore",
+        "--data-dir",
+        "/home/neo/rust/agcore/target/video-run-20260930-3/auditor",
+        "--threads",
+        "2",
+        "--min-peers",
+        "2",
+        "--max-tip-age",
+        "86400",
+        "--peer",
+        "/ip4/127.0.0.1/tcp/27900",
+        "--peer",
+        "/ip4/127.0.0.1/tcp/27910"
+      ]
+    }
+  ]
+}

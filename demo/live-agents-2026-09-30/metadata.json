@@ -1,0 +1,42 @@
+{
+  "recorded_date_utc": "2026-09-30T12:12:00Z",
+  "video_sha256": "f671403479243b94cae95811db00936cff1777bb32b129d4e5ed6b1d52f1503d",
+  "video_bytes": 1131884,
+  "network": "isolated-v2-fork-testnet",
+  "chain_height": 64,
+  "chain_tip_hash": "a057234b6c2bf76d781871de44eb549e4f9644a614665b51c1f91b4f65df4ab3",
+  "fixture_source_commit": "6c96ead36c253a6e3ccf150d7a10c4ed62d1e555",
+  "agcore_source_commit": "b16a0bbc5231142ee0c7cf8b37db9d787f12f141",
+  "agcore_upstream_commit": "6c96ead36c253a6e3ccf150d7a10c4ed62d1e555",
+  "agcore_binary_sha256": "dddc5ae21acbaad94e084a913aa9f7716316f178087b29902806cc412e9514e1",
+  "reference_binary_sha256": "5275386ee6be5ec88a0a52a0dbfb9ace9310684ba3d09041de01200fe8b2cf9c",
+  "codex_cli_version": "codex-cli 0.155.0-alpha.16.3",
+  "receipt_txid": "0b8edf2e2e6ff8336bccaeab646581e9f6fa39aa4be5e9ba9b92b458e2d27b99",
+  "receipt_sha256": "3f4b08ea8da8f27f5cecfdc614326a06e97ad51e3650a7be80aab29ab342d0f4",
+  "backend_command": [
+    "python3",
+    "demo/video_backend.py",
+    "--fixture",
+    "/home/neo/rust/paranoid/target/live-tests/live-agents-20260930-a",
+    "--evidence",
+    "/home/neo/rust/paranoid/research/live_agents/results/2026-09-30",
+    "--reference",
+    "/home/neo/rust/paranoid/target/release/examples/isolated_v2_node",
+    "--executable",
+    "/home/neo/rust/agcore/target/isolated/agcore",
+    "--output",
+    "/home/neo/rust/agcore/target/video-run-20260930-3"
+  ],
+  "agent_sessions": [
+    "requester",
+    "provider",
+    "auditor"
+  ],
+  "notes": [
+    "The chain was mined before filming.",
+    "The agents made fresh local checks during the continuous recording.",
+    "No new payment or contract call was made during filming.",
+    "The fixed result recomputation does not establish external service delivery."
+  ],
+  "video_format": "VP8 WebM, original GNOME screen recording"
+}

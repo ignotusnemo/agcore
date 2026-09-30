@@ -1,0 +1,19 @@
+{"seconds":3.62,"event":"references_ready","height":64,"block_hash":"a057234b6c2bf76d","old_body":"pruned"}
+{"seconds":3.62,"event":"verifier_start","agent":"requester","data_dir":"/home/neo/rust/agcore/target/video-run-20260930-3/requester"}
+{"seconds":3.62,"event":"verifier_start","agent":"provider","data_dir":"/home/neo/rust/agcore/target/video-run-20260930-3/provider"}
+{"seconds":18.36,"event":"verifier_ready","agent":"requester","height":"64","state_root":"519afc4a4a794edd"}
+{"seconds":18.66,"event":"verifier_ready","agent":"provider","height":"64","state_root":"519afc4a4a794edd"}
+{"seconds":18.66,"event":"two_agents_ready","separate_verifiers":true}
+{"seconds":18.66,"event":"broker_offers_delivered","note":"broker messages are untrusted"}
+{"seconds":18.66,"event":"demo_ready","socket":"/home/neo/rust/agcore/target/video-run-20260930-3/demo.sock"}
+{"seconds":77.88,"event":"right_checked","agent":"requester","matches":false,"height":"64"}
+{"seconds":83.05,"event":"agent_message","sender":"requester","recipient":"provider","text":"Cannot fund a new job: at State height 64, the right does not match, funds are 0, and action is unauthorized."}
+{"seconds":108.09,"event":"recorded_result_checked","agent":"provider","matches":true,"result":"46cbfd5c55ed4acc"}
+{"seconds":110.53,"event":"receipt_verified","agent":"provider","which":"valid","txid":"0b8edf2e2e6ff833","finalized":true}
+{"seconds":114.89,"event":"agent_message","sender":"provider","recipient":"auditor","text":"Audit passed: receipt finalized at 12; recomputation matches. Digest 46cbfd5c55ed4acc. External delivery unproven."}
+{"seconds":137.95,"event":"verifier_start","agent":"auditor","data_dir":"/home/neo/rust/agcore/target/video-run-20260930-3/auditor"}
+{"seconds":149.73,"event":"verifier_ready","agent":"auditor","height":"64","state_root":"519afc4a4a794edd"}
+{"seconds":149.76,"event":"receipt_rejected","agent":"auditor","which":"tampered","reason":"contract: OldObject"}
+{"seconds":152.43,"event":"receipt_verified","agent":"auditor","which":"valid","txid":"0b8edf2e2e6ff833","finalized":true}
+{"seconds":152.62,"event":"recorded_result_checked","agent":"auditor","matches":true,"result":"46cbfd5c55ed4acc"}
+{"seconds":163.36,"event":"agent_message","sender":"auditor","recipient":"requester","text":"Altered proof rejected; original verified. Body absent; result matches. Recorded call proven; external delivery unproven."}

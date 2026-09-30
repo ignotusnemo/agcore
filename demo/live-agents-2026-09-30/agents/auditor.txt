@@ -1,0 +1,103 @@
+Codex thread: 01a0f239-a791-7c20-b71a-529856ecc743
+
+AGENT:
+I’ll check both receipts, confirm the old body is absent, and recompute the recorded result.
+
+COMMAND:
+/usr/bin/zsh -lc 'python3 /home/neo/rust/agcore/demo/agent_tool.py auditor inbox'
+EXIT: 0
+OUTPUT:
+{
+  "ok": true,
+  "result": {
+    "messages": [
+      {
+        "from": "broker",
+        "text": "I sent the auditor a receipt. Check whether it proves payment. The copy I sent may be altered."
+      },
+      {
+        "from": "provider",
+        "text": "Audit passed: receipt finalized at 12; recomputation matches. Digest 46cbfd5c55ed4acc. External delivery unproven."
+      }
+    ]
+  }
+}
+
+COMMAND:
+/usr/bin/zsh -lc 'python3 /home/neo/rust/agcore/demo/agent_tool.py auditor receipt --which tampered'
+EXIT: 0
+OUTPUT:
+{
+  "ok": true,
+  "result": {
+    "accepted": false,
+    "reason": "contract: OldObject"
+  }
+}
+
+COMMAND:
+/usr/bin/zsh -lc 'python3 /home/neo/rust/agcore/demo/agent_tool.py auditor receipt --which valid'
+EXIT: 0
+OUTPUT:
+{
+  "ok": true,
+  "result": {
+    "accepted": true,
+    "finalized": true,
+    "height": "12",
+    "txid": "0b8edf2e2e6ff8336bccaeab646581e9f6fa39aa4be5e9ba9b92b458e2d27b99",
+    "payout": {
+      "address": "o1pqgug7fqk6f9k7aukdfsret64zuv5dj2z2dzaddymc3mxfagp86qyl4asp",
+      "amount_micronoid": "100000"
+    }
+  }
+}
+
+COMMAND:
+/usr/bin/zsh -lc 'python3 /home/neo/rust/agcore/demo/agent_tool.py auditor pruning'
+EXIT: 0
+OUTPUT:
+{
+  "ok": true,
+  "result": {
+    "height": 12,
+    "body_present": false,
+    "retained_body_present": false
+  }
+}
+
+COMMAND:
+/usr/bin/zsh -lc 'python3 /home/neo/rust/agcore/demo/agent_tool.py auditor check_result'
+EXIT: 0
+OUTPUT:
+{
+  "ok": true,
+  "result": {
+    "matches": true,
+    "recorded_result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+    "computed_result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+    "job": "fixed-compute-0",
+    "boundary": "This checks the recorded fixed computation, not delivery of an external service."
+  }
+}
+
+AGENT:
+The altered proof failed, so I reject it. The original receipt independently verified as finalized at height 12. The old body is absent, and the recomputed result matches. This proves a recorded call, not external service delivery.
+
+COMMAND:
+/usr/bin/zsh -lc "python3 /home/neo/rust/agcore/demo/agent_tool.py auditor send --to requester --text 'Altered proof rejected; original verified. Body absent; result matches. Recorded call proven; external delivery unproven.'"
+EXIT: 0
+OUTPUT:
+{
+  "ok": true,
+  "result": {
+    "delivered": true
+  }
+}
+
+AGENT:
+I rejected the altered proof and independently verified the original receipt. The old transaction body is absent. Separate recomputation matches the recorded result.
+
+The receipt proves a recorded call, not external service delivery. I sent the requester this conclusion.
+
+TURN COMPLETED

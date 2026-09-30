@@ -1,0 +1,32 @@
+ISOLATED FORK TEST BUILD: v1.1 activates at height 5; not for mainnet
+12:08:55  INFO created default node config path=/home/neo/rust/agcore/target/video-run-20260930-3/reference-1/config.toml
+12:08:55  INFO CPU proof and mining backend selected backend=avx2+vpclmul threads=12
+12:08:58  INFO resumed exact state from compact segment summaries active_segments=1 active_slot_count=76
+12:08:58  INFO resumed from persisted state height=64
+12:08:58  INFO loading wallet path=/home/neo/rust/agcore/target/video-run-20260930-3/reference-1/data/wallet.key
+12:08:58  INFO loaded receipts from disk count=6
+12:08:58  INFO loaded wallet history from disk count=6
+12:08:58  INFO wallet active address loaded height=64 active_index=0 utxos=0 balance=0 receipts_removed=0 receipts_recovered=0
+12:08:58  INFO loaded persistent P2P identity peer=12D3KooWMbu5YbXM5vnWQC5Coe17Lg16pnyqJY3eyw2RrnjV77iS
+
+────────────────────────────────────────────────────────────────────────────
+  PARANOID  v2.0.1   ·  mainnet
+────────────────────────────────────────────────────────────────────────────
+  p2p / rpc      127.0.0.1:27910   rpc  127.0.0.1:27911
+  chain          h=64   state  519afc4a4a794edd42323e2f29603a0a2fa4473ccb685e8f487b3cb071077578
+  state          76/16777216 slots  0.00%  [░░░░░░░░░░░░░░░░░░|░░░░░]  1/256 seg  3.7KB encoded  800.0MB domain max
+  wallet         o1asy20v8aag8nfkxgug0sh3hh2r8u9nka882gyhduh9t5vk73qlvq8psn29
+  mining         disabled
+────────────────────────────────────────────────────────────────────────────
+
+12:08:58  INFO peer connected peer=12D3KooWCZidZC8DuxeKamp5Qaj7YLyo6pDvoUer17cuUhuiuur8
+12:08:58  WARN Failed to trigger bootstrap: No known peers.
+12:08:59  INFO mining network readiness changed authenticated_peers=1 failure_domains=1 frontier_authorizations=1 required_domains=1 isolated=false proof_ready=true nonce_ready=true
+12:09:02  INFO canonical fork origin recovered without advancing the tip peer=12D3KooWCZidZC8DuxeKamp5Qaj7YLyo6pDvoUer17cuUhuiuur8 height=64
+12:09:03  INFO peer connected peer=12D3KooWSbC5nLz1vZhYaSMb9CBatVMyb2ibKwS3Es4WCaWw2JFE
+12:09:03  INFO peer connected peer=12D3KooWFU83nD67L7b2Qzw4BjrRQgWU9Nrpw9HhZNSmeEwobb1V
+12:11:15  INFO peer connected peer=12D3KooWGzNfKEYVGLpAgEhTAxqBoA8momrtbkiqkqLRzsdUzpa5
+12:13:43  INFO RPC stop command received — initiating graceful shutdown
+12:13:43  INFO stop command received via RPC
+12:13:43  INFO shutting down — cancelling miner and closing connections
+12:13:43  INFO goodbye — MDBX flushed on drop

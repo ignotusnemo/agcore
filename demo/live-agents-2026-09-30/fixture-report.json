@@ -1,0 +1,1096 @@
+{
+  "status": "passed",
+  "quota": 10,
+  "events": [
+    {
+      "case": "wrong_claim_authority",
+      "outcome": "rejected",
+      "reason": "RPC walletCallObject@26601 failed: {'code': -32000, 'message': 'active wallet address is not the contract authority at this height'}"
+    },
+    {
+      "case": "claimant_cannot_close",
+      "outcome": "rejected",
+      "reason": "RPC walletCallObject@26611 failed: {'code': -32000, 'message': 'contract: Policy'}"
+    },
+    {
+      "case": "wrong_job_payment",
+      "outcome": "rejected",
+      "reason": "RPC previewObjectCall@26611 failed: {'code': -32000, 'message': 'contract: Program(Assertion { step: 1 })'}"
+    },
+    {
+      "case": "execute_before_finality",
+      "outcome": "rejected",
+      "reason": "not_final"
+    },
+    {
+      "case": "restored_agent_state",
+      "outcome": "rejected",
+      "reason": "RPC previewObjectCall@26621 failed: {'code': -32000, 'message': 'opening or incarnation does not match the current contract State'}"
+    },
+    {
+      "case": "invented_larger_counter",
+      "outcome": "rejected",
+      "reason": "RPC previewObjectCall@26611 failed: {'code': -32000, 'message': 'opening or incarnation does not match the current contract State'}"
+    },
+    {
+      "case": "exhausted_quota_agent-a",
+      "outcome": "rejected",
+      "reason": "RPC previewObjectCall@26611 failed: {'code': -32000, 'message': 'contract: Program(Underflow { step: 0 })'}"
+    },
+    {
+      "case": "exhausted_quota_agent-b",
+      "outcome": "rejected",
+      "reason": "RPC previewObjectCall@26621 failed: {'code': -32000, 'message': 'contract: Program(Underflow { step: 0 })'}"
+    },
+    {
+      "case": "valid_unenrolled_instance",
+      "outcome": "rejected",
+      "reason": "outside_enrolled_instance_lineage"
+    },
+    {
+      "case": "expired_claim_with_unused_quota",
+      "outcome": "rejected",
+      "reason": "RPC previewObjectCall@26611 failed: {'code': -32000, 'message': 'contract: Policy'}"
+    },
+    {
+      "case": "receipt_wrong_executor_0",
+      "outcome": "rejected",
+      "reason": "not_this_executor_job"
+    },
+    {
+      "case": "receipt_replay_0",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "receipt_wrong_executor_1",
+      "outcome": "rejected",
+      "reason": "not_this_executor_job"
+    },
+    {
+      "case": "receipt_replay_1",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "receipt_wrong_executor_2",
+      "outcome": "rejected",
+      "reason": "not_this_executor_job"
+    },
+    {
+      "case": "receipt_replay_2",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "receipt_wrong_executor_3",
+      "outcome": "rejected",
+      "reason": "not_this_executor_job"
+    },
+    {
+      "case": "receipt_replay_3",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "receipt_wrong_executor_4",
+      "outcome": "rejected",
+      "reason": "not_this_executor_job"
+    },
+    {
+      "case": "receipt_replay_4",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "receipt_wrong_executor_5",
+      "outcome": "rejected",
+      "reason": "not_this_executor_job"
+    },
+    {
+      "case": "receipt_replay_5",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "receipt_wrong_executor_6",
+      "outcome": "rejected",
+      "reason": "not_this_executor_job"
+    },
+    {
+      "case": "receipt_replay_6",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "receipt_wrong_executor_7",
+      "outcome": "rejected",
+      "reason": "not_this_executor_job"
+    },
+    {
+      "case": "receipt_replay_7",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "receipt_wrong_executor_8",
+      "outcome": "rejected",
+      "reason": "not_this_executor_job"
+    },
+    {
+      "case": "receipt_replay_8",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "receipt_wrong_executor_9",
+      "outcome": "rejected",
+      "reason": "not_this_executor_job"
+    },
+    {
+      "case": "crash_after_reservation",
+      "outcome": "rejected",
+      "reason": "injected_crash_after_durable_reservation"
+    },
+    {
+      "case": "receipt_replay_9",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "tampered_receipt",
+      "outcome": "rejected",
+      "reason": "RPC verifyObjectReceipt@26611 failed: {'code': -32000, 'message': 'contract: OldObject'}"
+    },
+    {
+      "case": "gateway_restart_replay_0",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "gateway_restart_replay_1",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "gateway_restart_replay_2",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "gateway_restart_replay_3",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "gateway_restart_replay_4",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "gateway_restart_replay_5",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "gateway_restart_replay_6",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "gateway_restart_replay_7",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "gateway_restart_replay_8",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    },
+    {
+      "case": "gateway_restart_replay_9",
+      "outcome": "rejected",
+      "reason": "permit_already_reserved_or_used"
+    }
+  ],
+  "blocks": [
+    {
+      "first": 1,
+      "last": 10,
+      "seconds": 167.63456353600486
+    },
+    {
+      "first": 11,
+      "last": 11,
+      "seconds": 28.34758035298728
+    },
+    {
+      "first": 12,
+      "last": 12,
+      "seconds": 26.343627804002608
+    },
+    {
+      "first": 13,
+      "last": 13,
+      "seconds": 24.998348034001538
+    },
+    {
+      "first": 14,
+      "last": 14,
+      "seconds": 32.05448448599782
+    },
+    {
+      "first": 15,
+      "last": 15,
+      "seconds": 26.535150136987795
+    },
+    {
+      "first": 16,
+      "last": 16,
+      "seconds": 24.585280896004406
+    },
+    {
+      "first": 17,
+      "last": 17,
+      "seconds": 24.780546783993486
+    },
+    {
+      "first": 18,
+      "last": 18,
+      "seconds": 34.69153061299585
+    },
+    {
+      "first": 19,
+      "last": 19,
+      "seconds": 26.48796036100248
+    },
+    {
+      "first": 20,
+      "last": 20,
+      "seconds": 25.785182526000426
+    },
+    {
+      "first": 21,
+      "last": 21,
+      "seconds": 24.831890868998016
+    },
+    {
+      "first": 22,
+      "last": 22,
+      "seconds": 24.197963313999935
+    },
+    {
+      "first": 23,
+      "last": 39,
+      "seconds": 429.46916218599654
+    },
+    {
+      "first": 40,
+      "last": 44,
+      "seconds": 142.84492501799832
+    },
+    {
+      "first": 45,
+      "last": 45,
+      "seconds": 33.11828386900015
+    },
+    {
+      "first": 46,
+      "last": 64,
+      "seconds": 513.3837403299985
+    }
+  ],
+  "permits": [
+    {
+      "txid": "0b8edf2e2e6ff8336bccaeab646581e9f6fa39aa4be5e9ba9b92b458e2d27b99",
+      "height": 12,
+      "before": "10",
+      "after": "9",
+      "payout": {
+        "address": "o1pqgug7fqk6f9k7aukdfsret64zuv5dj2z2dzaddymc3mxfagp86qyl4asp",
+        "amount_micronoid": 100000
+      },
+      "receipt_bytes": 918314,
+      "receipt_sha256": "3f4b08ea8da8f27f5cecfdc614326a06e97ad51e3650a7be80aab29ab342d0f4"
+    },
+    {
+      "txid": "4872c1e9a9aafd24fac124ad73a3a28c1319185f81d9d808ae242c1b1fce64c1",
+      "height": 13,
+      "before": "9",
+      "after": "8",
+      "payout": {
+        "address": "o1rurrsggeddrkt70ry4st9awx6wx0ew2sxwsy6px7ssnf5yln2kdqxj3he6",
+        "amount_micronoid": 100000
+      },
+      "receipt_bytes": 915018,
+      "receipt_sha256": "d1e167c161eade1e271f95054bee7434923f16b35527c19f1fd3b4899d76c4db"
+    },
+    {
+      "txid": "8ab044bd9f542879a849f718f7d243a1e0332787304c0213869505f2ef038284",
+      "height": 14,
+      "before": "8",
+      "after": "7",
+      "payout": {
+        "address": "o1rfczzh74duhyc2pwwvnry9sftcxlcum38tljk0hzepwjj0nhepwslkavg8",
+        "amount_micronoid": 100000
+      },
+      "receipt_bytes": 916970,
+      "receipt_sha256": "4f336357a20d30490a765425222fae8f594ad1e10a6015b14c015d5bc5cad70b"
+    },
+    {
+      "txid": "52039143669f2147080801b970336309fd684954922689640c8824d7c93f5603",
+      "height": 15,
+      "before": "7",
+      "after": "6",
+      "payout": {
+        "address": "o1qwnpvun06v96hqcll3mazjecypg2k6jlygd5j2dnq40ax5eudeqs9jykpg",
+        "amount_micronoid": 100000
+      },
+      "receipt_bytes": 914378,
+      "receipt_sha256": "5cbac3a566069230478aea4e0b32ff4a68b535cff38baa4c3aaa65b8b9fff318"
+    },
+    {
+      "txid": "50dbf1bd2c496821d5f0f74eebcf8a51d65bde6fd9bdc9b63f35afb3ad9fe234",
+      "height": 16,
+      "before": "6",
+      "after": "5",
+      "payout": {
+        "address": "o1ahzm6ulrm9zqsuzvhwdqyjnvhpu682cjyd9mdkuk847c8nhw59pshxlmww",
+        "amount_micronoid": 100000
+      },
+      "receipt_bytes": 912778,
+      "receipt_sha256": "b868a683f6bf55ed959356a883b54cf0489e7a4c6c8b883ec4b2b0d3ff3701a4"
+    },
+    {
+      "txid": "0ba1471f6070089dbc622218084c264956fa1e49bd81ee35e5d8ac4f8b67221d",
+      "height": 17,
+      "before": "5",
+      "after": "4",
+      "payout": {
+        "address": "o1xlscnzy0756975xzkwyfugujutxh3zr4q8u3hzhtt7jxuhtefwhqwv3el7",
+        "amount_micronoid": 100000
+      },
+      "receipt_bytes": 916554,
+      "receipt_sha256": "6580fbde3dc06920072503cf7b56435bc60c5c33f65e5c7ecef5dcc89928263a"
+    },
+    {
+      "txid": "12e9c76b74b4022a30e8298139e359887a763ccda3d35c3d49738d9b7521fc9c",
+      "height": 18,
+      "before": "4",
+      "after": "3",
+      "payout": {
+        "address": "o1hlcfq85pu9uyqa2n0j444qhayyg3y3whs05nhkjg5d3nctj4sx2syqdqqm",
+        "amount_micronoid": 100000
+      },
+      "receipt_bytes": 917226,
+      "receipt_sha256": "d644e30e946d56c27c06e5b2784f01e6240e1c2aee549ed1b0fcb1ef302ff539"
+    },
+    {
+      "txid": "8913bb7a0f4f38810b12a14a8292be9bc41559b9f32129b2f0f91367da50b66e",
+      "height": 19,
+      "before": "3",
+      "after": "2",
+      "payout": {
+        "address": "o1kzhh7c85653mexgxecef5pupgre6wvlmqq3a34pylejrn684glgs5ze58v",
+        "amount_micronoid": 100000
+      },
+      "receipt_bytes": 916042,
+      "receipt_sha256": "75a0ab2f2becc7f0f000b9cf464fa40b751819e9f609a3ad125cd0adfd8f2ec5"
+    },
+    {
+      "txid": "ed5ecfc3a7193e8753f33e21d8fe34b4b143a59a3fed9f97999da2f42f7889f9",
+      "height": 20,
+      "before": "2",
+      "after": "1",
+      "payout": {
+        "address": "o1q8ger05krllgwm49pp580p2kv378shxqhxw0d89na6kq62g9m5es0zytds",
+        "amount_micronoid": 100000
+      },
+      "receipt_bytes": 915530,
+      "receipt_sha256": "3b51596a2a7d03cae006d64115c75ed2922817570d41e874ab8b4a5175941724"
+    },
+    {
+      "txid": "13a0145dc0fd641f01f1c201feba3d2899f6ca1fde9bd9e1eac5694f321181e3",
+      "height": 21,
+      "before": "1",
+      "after": "0",
+      "payout": {
+        "address": "o1mhhrdc0uyw4mu4r24epp8kpgktggrxwhq4cszxz6hcl99ahr3zqswj4zew",
+        "amount_micronoid": 100000
+      },
+      "receipt_bytes": 916106,
+      "receipt_sha256": "77038e3e61e2a3796c2ba07c8fe8a972ba5bef13421c5643681bb2e59d2f7b80"
+    }
+  ],
+  "jobs": [
+    {
+      "gateway": "executor-a",
+      "job": "fixed-compute-0",
+      "txid": "0b8edf2e2e6ff8336bccaeab646581e9f6fa39aa4be5e9ba9b92b458e2d27b99",
+      "result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+      "verification_and_job_seconds": 2.0834879920003004
+    },
+    {
+      "gateway": "executor-a",
+      "job": "fixed-compute-2",
+      "txid": "4872c1e9a9aafd24fac124ad73a3a28c1319185f81d9d808ae242c1b1fce64c1",
+      "result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+      "verification_and_job_seconds": 2.1411863730027108
+    },
+    {
+      "gateway": "executor-b",
+      "job": "fixed-compute-3",
+      "txid": "8ab044bd9f542879a849f718f7d243a1e0332787304c0213869505f2ef038284",
+      "result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+      "verification_and_job_seconds": 2.0891186249937164
+    },
+    {
+      "gateway": "executor-a",
+      "job": "fixed-compute-4",
+      "txid": "52039143669f2147080801b970336309fd684954922689640c8824d7c93f5603",
+      "result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+      "verification_and_job_seconds": 2.317358651998802
+    },
+    {
+      "gateway": "executor-b",
+      "job": "fixed-compute-5",
+      "txid": "50dbf1bd2c496821d5f0f74eebcf8a51d65bde6fd9bdc9b63f35afb3ad9fe234",
+      "result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+      "verification_and_job_seconds": 2.699448034996749
+    },
+    {
+      "gateway": "executor-a",
+      "job": "fixed-compute-6",
+      "txid": "0ba1471f6070089dbc622218084c264956fa1e49bd81ee35e5d8ac4f8b67221d",
+      "result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+      "verification_and_job_seconds": 2.0016467399982503
+    },
+    {
+      "gateway": "executor-b",
+      "job": "fixed-compute-7",
+      "txid": "12e9c76b74b4022a30e8298139e359887a763ccda3d35c3d49738d9b7521fc9c",
+      "result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+      "verification_and_job_seconds": 2.0780937880044803
+    },
+    {
+      "gateway": "executor-a",
+      "job": "fixed-compute-8",
+      "txid": "8913bb7a0f4f38810b12a14a8292be9bc41559b9f32129b2f0f91367da50b66e",
+      "result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+      "verification_and_job_seconds": 2.0535802059894195
+    },
+    {
+      "gateway": "executor-b",
+      "job": "fixed-compute-9",
+      "txid": "ed5ecfc3a7193e8753f33e21d8fe34b4b143a59a3fed9f97999da2f42f7889f9",
+      "result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+      "verification_and_job_seconds": 1.972089643997606
+    }
+  ],
+  "source_head": "6c96ead36c253a6e3ccf150d7a10c4ed62d1e555",
+  "script_sha256": "c44cd16fe59c1fc8967e7716e67c12678f79a0da19102f29316299c6399b9494",
+  "host": "Linux-7.0.0-30-generic-x86_64-with-glibc2.39",
+  "binary_sha256": {
+    "isolated_v2_node": "5275386ee6be5ec88a0a52a0dbfb9ace9310684ba3d09041de01200fe8b2cf9c",
+    "parano1d-miner": "5856ff47d1678817a8ce60c632fb9253ca00708ec3ffbfd667dc1f7a4a4304f3"
+  },
+  "fork_heights": [
+    5,
+    10
+  ],
+  "llm_models_used": false,
+  "workload": "200000 sequential SHA-256 operations per authorized subprocess",
+  "stage": "complete",
+  "elapsed_seconds": 1863.404542527991,
+  "owner": "o13m0pqc07m3c05zwf0pj6jex7wxn3v0fcxycnp9g5xwmx747sun6sk3ykpf",
+  "claimant": "o1asy20v8aag8nfkxgug0sh3hh2r8u9nka882gyhduh9t5vk73qlvq8psn29",
+  "enrollment": {
+    "opening": {
+      "abi_version": 3,
+      "state": [
+        "10",
+        "0"
+      ],
+      "address": "o1n7qr6zxfkdg528j4sutzaewgppmxptxukcrxptxgz2zl0qwklz3qvym6ez",
+      "opening_hex": "4e4f49444f424a33030003700a0000000000000000000000000000000000000000000000000000000000e8210a00000000000000000000000000a0860100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000ec08a7b0fdea0f34d8c8e21f0bc6f750cfc2cedd39d4825dbcb957465bd107d88ede1061fedc70fa09c97865a964de71a7163d38313130951433b66f57d0e4f52c000000000000008ede1061fedc70fa09c97865a964de71a7163d38313130951433b66f57d0e4f58ede1061fedc70fa09c97865a964de71a7163d38313130951433b66f57d0e4f540420f000000000040420f0000000000a08601000000000019",
+      "code_id": "9e9d6f1d9262138aecb6b5d89b0e59f795bb7200f7239a8aa5b300e3b1ecb67c",
+      "state_hex": "0000000000000000000000000000000a",
+      "program": [
+        {
+          "opcode": "subtract",
+          "destination": "state0",
+          "left": "state0",
+          "right": "one",
+          "predicate": {
+            "source": "terminal",
+            "inverted": true
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "assert_equal",
+          "destination": "scratch0",
+          "left": "payout",
+          "right": "immediate",
+          "predicate": {
+            "source": "terminal",
+            "inverted": true
+          },
+          "immediate": "100000"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        },
+        {
+          "opcode": "keep",
+          "destination": "state0",
+          "left": "state0",
+          "right": "state0",
+          "predicate": {
+            "source": "always",
+            "inverted": false
+          },
+          "immediate": "0"
+        }
+      ],
+      "claim_authority": "o1asy20v8aag8nfkxgug0sh3hh2r8u9nka882gyhduh9t5vk73qlvq8psn29",
+      "recovery_authority": "o13m0pqc07m3c05zwf0pj6jex7wxn3v0fcxycnp9g5xwmx747sun6sk3ykpf",
+      "claim_recipient": "o13m0pqc07m3c05zwf0pj6jex7wxn3v0fcxycnp9g5xwmx747sun6sk3ykpf",
+      "recovery_recipient": "o13m0pqc07m3c05zwf0pj6jex7wxn3v0fcxycnp9g5xwmx747sun6sk3ykpf",
+      "deadline_height": 44,
+      "max_fee_micronoid": 1000000,
+      "max_payout_micronoid": 100000,
+      "min_retained_micronoid": 1000000,
+      "claim_can_continue": true,
+      "claim_can_close": false,
+      "recovery_can_continue": false,
+      "recovery_can_close": true,
+      "unrestricted_payout_recipient": true
+    },
+    "slot": {
+      "page": 0,
+      "lane": 0,
+      "slot_index": 9732326,
+      "amount_micronoid": 100000000,
+      "owner": "o1n7qr6zxfkdg528j4sutzaewgppmxptxukcrxptxgz2zl0qwklz3qvym6ez",
+      "creation_id": 16
+    },
+    "funding_txid": "ac894dee2f9f3668d3d7137f896405a53b844eed4917820124178a5f1afd195a"
+  },
+  "race": [
+    {
+      "node": "agent-a",
+      "accepted": true,
+      "result": {
+        "transaction": {
+          "txid": "0b8edf2e2e6ff8336bccaeab646581e9f6fa39aa4be5e9ba9b92b458e2d27b99",
+          "amount_micronoid": 100000,
+          "fee_micronoid": 9000,
+          "input_count": 1,
+          "output_count": 2
+        },
+        "call_height": 12,
+        "successor": {
+          "abi_version": 3,
+          "state": [
+            "9",
+            "0"
+          ],
+          "address": "o1j2sczym6y8fz69l9t0j6qyhzrda7kl5rlnq8ggts04l8l0nsg6eq8sjmrs",
+          "opening_hex": "4e4f49444f424a33030003700a0000000000000000000000000000000000000000000000000000000000e8210a00000000000000000000000000a08601000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009000000000000000000000000000000ec08a7b0fdea0f34d8c8e21f0bc6f750cfc2cedd39d4825dbcb957465bd107d88ede1061fedc70fa09c97865a964de71a7163d38313130951433b66f57d0e4f52c000000000000008ede1061fedc70fa09c97865a964de71a7163d38313130951433b66f57d0e4f58ede1061fedc70fa09c97865a964de71a7163d38313130951433b66f57d0e4f540420f000000000040420f0000000000a08601000000000019",
+          "code_id": "9e9d6f1d9262138aecb6b5d89b0e59f795bb7200f7239a8aa5b300e3b1ecb67c",
+          "state_hex": "00000000000000000000000000000009",
+          "program": [
+            {
+              "opcode": "subtract",
+              "destination": "state0",
+              "left": "state0",
+              "right": "one",
+              "predicate": {
+                "source": "terminal",
+                "inverted": true
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "assert_equal",
+              "destination": "scratch0",
+              "left": "payout",
+              "right": "immediate",
+              "predicate": {
+                "source": "terminal",
+                "inverted": true
+              },
+              "immediate": "100000"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            },
+            {
+              "opcode": "keep",
+              "destination": "state0",
+              "left": "state0",
+              "right": "state0",
+              "predicate": {
+                "source": "always",
+                "inverted": false
+              },
+              "immediate": "0"
+            }
+          ],
+          "claim_authority": "o1asy20v8aag8nfkxgug0sh3hh2r8u9nka882gyhduh9t5vk73qlvq8psn29",
+          "recovery_authority": "o13m0pqc07m3c05zwf0pj6jex7wxn3v0fcxycnp9g5xwmx747sun6sk3ykpf",
+          "claim_recipient": "o13m0pqc07m3c05zwf0pj6jex7wxn3v0fcxycnp9g5xwmx747sun6sk3ykpf",
+          "recovery_recipient": "o13m0pqc07m3c05zwf0pj6jex7wxn3v0fcxycnp9g5xwmx747sun6sk3ykpf",
+          "deadline_height": 44,
+          "max_fee_micronoid": 1000000,
+          "max_payout_micronoid": 100000,
+          "min_retained_micronoid": 1000000,
+          "claim_can_continue": true,
+          "claim_can_close": false,
+          "recovery_can_continue": false,
+          "recovery_can_close": true,
+          "unrestricted_payout_recipient": true
+        },
+        "output_slot": 9759847
+      }
+    },
+    {
+      "node": "agent-b",
+      "accepted": false,
+      "reason": "RPC walletCallObject@26621 failed: {'code': -32000, 'message': 'consensus: SlotConflict'}"
+    }
+  ],
+  "race_canonical_permits": 1,
+  "foreign_instance": {
+    "txid": "28212b7c9b167dade38a2eacb197dc417c50114f79482261ccb4614ba1bfc5e8",
+    "network_valid": true,
+    "gateway_authorized": false
+  },
+  "recovery": {
+    "txid": "d9767bbd860e61c922b4511dd6c069fab7c591c14dffae297e5a300f9b0d9f45",
+    "height": 45
+  },
+  "pruning_checks": [
+    {
+      "height": 12,
+      "raw_block": null,
+      "retained_body": null
+    },
+    {
+      "height": 13,
+      "raw_block": null,
+      "retained_body": null
+    },
+    {
+      "height": 14,
+      "raw_block": null,
+      "retained_body": null
+    },
+    {
+      "height": 15,
+      "raw_block": null,
+      "retained_body": null
+    },
+    {
+      "height": 16,
+      "raw_block": null,
+      "retained_body": null
+    },
+    {
+      "height": 17,
+      "raw_block": null,
+      "retained_body": null
+    },
+    {
+      "height": 18,
+      "raw_block": null,
+      "retained_body": null
+    },
+    {
+      "height": 19,
+      "raw_block": null,
+      "retained_body": null
+    },
+    {
+      "height": 20,
+      "raw_block": null,
+      "retained_body": null
+    },
+    {
+      "height": 21,
+      "raw_block": null,
+      "retained_body": null
+    }
+  ],
+  "late_sync_seconds": 22.604547947994433,
+  "late_resources_after_sync": {
+    "process": {
+      "VmHWM": "815872 kB",
+      "VmRSS": "673720 kB",
+      "Threads": "18"
+    },
+    "data_file_bytes": 24724096,
+    "data_allocated_bytes": 24739840,
+    "file_count": 7
+  },
+  "late_receipt_checks": [
+    {
+      "txid": "0b8edf2e2e6ff8336bccaeab646581e9f6fa39aa4be5e9ba9b92b458e2d27b99",
+      "seconds": 1.9821203790052095
+    },
+    {
+      "txid": "4872c1e9a9aafd24fac124ad73a3a28c1319185f81d9d808ae242c1b1fce64c1",
+      "seconds": 1.9506249170080991
+    },
+    {
+      "txid": "8ab044bd9f542879a849f718f7d243a1e0332787304c0213869505f2ef038284",
+      "seconds": 1.9481266039947513
+    },
+    {
+      "txid": "52039143669f2147080801b970336309fd684954922689640c8824d7c93f5603",
+      "seconds": 1.9887719279940939
+    },
+    {
+      "txid": "50dbf1bd2c496821d5f0f74eebcf8a51d65bde6fd9bdc9b63f35afb3ad9fe234",
+      "seconds": 2.017329536000034
+    },
+    {
+      "txid": "0ba1471f6070089dbc622218084c264956fa1e49bd81ee35e5d8ac4f8b67221d",
+      "seconds": 1.9635848329926375
+    },
+    {
+      "txid": "12e9c76b74b4022a30e8298139e359887a763ccda3d35c3d49738d9b7521fc9c",
+      "seconds": 2.2003897370013874
+    },
+    {
+      "txid": "8913bb7a0f4f38810b12a14a8292be9bc41559b9f32129b2f0f91367da50b66e",
+      "seconds": 1.966716004011687
+    },
+    {
+      "txid": "ed5ecfc3a7193e8753f33e21d8fe34b4b143a59a3fed9f97999da2f42f7889f9",
+      "seconds": 2.0498261869943235
+    },
+    {
+      "txid": "13a0145dc0fd641f01f1c201feba3d2899f6ca1fde9bd9e1eac5694f321181e3",
+      "seconds": 1.978879230999155
+    }
+  ],
+  "late_resources_after_receipts": {
+    "process": {
+      "VmHWM": "815872 kB",
+      "VmRSS": "685172 kB",
+      "Threads": "18"
+    },
+    "data_file_bytes": 25641904,
+    "data_allocated_bytes": 25665536,
+    "file_count": 10
+  },
+  "late_original_status": {
+    "matches_opening": false,
+    "slot": {
+      "slot_index": 9732326,
+      "value": 0,
+      "creation_id": 0,
+      "owner": "",
+      "empty": true
+    }
+  },
+  "launch_counts": {
+    "executor-a": {
+      "completed": 5,
+      "reserved": 1
+    },
+    "executor-b": {
+      "completed": 4
+    }
+  },
+  "final_tip": {
+    "height": 64,
+    "best_hash": "a057234b6c2bf76d781871de44eb549e4f9644a614665b51c1f91b4f65df4ab3",
+    "difficulty_target": "0000000000000000000000000000000000000000000000a081b61208a0350000",
+    "active_slot_count": 76,
+    "log_slots": 24,
+    "circulating_supply_micronoid": "1196967500"
+  }
+}

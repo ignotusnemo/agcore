@@ -1,0 +1,90 @@
+Codex thread: 01a0f239-22b7-71c1-8a50-b31ea3532b53
+
+AGENT:
+I’ll read the messages, verify the saved receipt with my local Core, and recompute the recorded result.
+
+COMMAND:
+/usr/bin/zsh -lc 'python3 /home/neo/rust/agcore/demo/agent_tool.py provider inbox'
+EXIT: 0
+OUTPUT:
+{
+  "ok": true,
+  "result": {
+    "messages": [
+      {
+        "from": "broker",
+        "text": "I have a saved receipt and result for a completed compute job. Can you verify them independently?"
+      },
+      {
+        "from": "requester",
+        "text": "Cannot fund a new job: at State height 64, the right does not match, funds are 0, and action is unauthorized."
+      }
+    ]
+  }
+}
+
+COMMAND:
+/usr/bin/zsh -lc 'python3 /home/neo/rust/agcore/demo/agent_tool.py provider status'
+EXIT: 0
+OUTPUT:
+{
+  "ok": true,
+  "result": {
+    "ready": true,
+    "height": "64",
+    "state_root": "519afc4a4a794edd42323e2f29603a0a2fa4473ccb685e8f487b3cb071077578",
+    "peer_groups": 2,
+    "network": "isolated-v2-fork-testnet"
+  }
+}
+
+COMMAND:
+/usr/bin/zsh -lc 'python3 /home/neo/rust/agcore/demo/agent_tool.py provider check_result'
+EXIT: 0
+OUTPUT:
+{
+  "ok": true,
+  "result": {
+    "matches": true,
+    "recorded_result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+    "computed_result": "46cbfd5c55ed4acc46614d87daf242fc091ff7c1d5d30f3af998a5316f856f0e",
+    "job": "fixed-compute-0",
+    "boundary": "This checks the recorded fixed computation, not delivery of an external service."
+  }
+}
+
+COMMAND:
+/usr/bin/zsh -lc 'python3 /home/neo/rust/agcore/demo/agent_tool.py provider receipt'
+EXIT: 0
+OUTPUT:
+{
+  "ok": true,
+  "result": {
+    "accepted": true,
+    "finalized": true,
+    "height": "12",
+    "txid": "0b8edf2e2e6ff8336bccaeab646581e9f6fa39aa4be5e9ba9b92b458e2d27b99",
+    "payout": {
+      "address": "o1pqgug7fqk6f9k7aukdfsret64zuv5dj2z2dzaddymc3mxfagp86qyl4asp",
+      "amount_micronoid": "100000"
+    }
+  }
+}
+
+COMMAND:
+/usr/bin/zsh -lc "python3 /home/neo/rust/agcore/demo/agent_tool.py provider send --to auditor --text 'Audit passed: receipt finalized at 12; recomputation matches. Digest 46cbfd5c55ed4acc. External delivery unproven.'"
+EXIT: 0
+OUTPUT:
+{
+  "ok": true,
+  "result": {
+    "delivered": true
+  }
+}
+
+AGENT:
+Local Core accepted the saved receipt as finalized at height 12. My recomputation matched the recorded result.
+
+I sent the auditor the outcome and short digest `46cbfd5c55ed4acc`. These checks do not prove external service delivery. No new job was started.
+
+TURN COMPLETED
