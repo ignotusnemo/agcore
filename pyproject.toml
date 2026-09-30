@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "parano1d-agcore"
+version = "0.1.0"
+description = "Python process client for Agent Core"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["python"]

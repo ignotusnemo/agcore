@@ -1,0 +1,3 @@
+[submodule "upstream/parano1d"]
+	path = upstream/parano1d
+	url = https://git.parano1d.org/ignotusnemo/parano1d.git
