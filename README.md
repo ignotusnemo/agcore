@@ -2,7 +2,7 @@
 
 Agent Core (`agcore`) gives an agent its own Parano1d verifier. It connects to native P2P peers, verifies recursive proofs, maintains authenticated live State and checks portable receipts. An agent supplies public contract terms and an exact State instance; Core checks them against its own selected chain.
 
-[Canonical source](https://git.parano1d.org/ignotusnemo/agcore) · [GitHub mirror](https://github.com/proof-native/agcore) · [GitLab mirror](https://gitlab.com/ignotusnemo/agcore)
+[Canonical source](https://git.parano1d.org/ignotusnemo/agcore)
 
 This first version is read-only. It provides verification of rights and receipts through private stdin/stdout pipes, with an asynchronous Python client. It does not start the full daemon, an HTTP server, a GUI, a wallet or a miner. It never holds a spending key or broadcasts a transaction.
 

@@ -30,8 +30,13 @@ const SEGMENT_WINDOW: usize = 2;
 const BODY_WINDOW: usize = 4;
 const PREFETCH_BYTES: usize = 32 * 1024 * 1024;
 
+enum FollowOutcome {
+    Checked,
+    NoHeaders,
+}
+
 pub async fn run(core: Arc<Core>, net: Network, data: PathBuf) -> Result<()> {
-    let mut failed = HashMap::<PeerId, Instant>::new();
+    let mut deferred = HashMap::<PeerId, Instant>::new();
     let mut cursor = 0usize;
     loop {
         let mut peers: Vec<_> = net
@@ -42,9 +47,9 @@ pub async fn run(core: Arc<Core>, net: Network, data: PathBuf) -> Result<()> {
             .iter()
             .filter(|(id, p)| {
                 p.selected
-                    && failed
+                    && deferred
                         .get(id)
-                        .is_none_or(|at| at.elapsed() > Duration::from_secs(3))
+                        .is_none_or(|until| Instant::now() >= *until)
             })
             .map(|(id, _)| *id)
             .collect();
@@ -90,12 +95,24 @@ pub async fn run(core: Arc<Core>, net: Network, data: PathBuf) -> Result<()> {
                     Err(error) => Err(error),
                 };
                 match outcome {
-                    Ok(()) => {
+                    Ok(FollowOutcome::Checked) => {
                         let mut status = net.status.lock().unwrap();
                         status.stage = "following";
                         status.error = None;
-                        failed.remove(&peer);
+                        deferred.remove(&peer);
                         progressed = true;
+                    }
+                    Ok(FollowOutcome::NoHeaders) => {
+                        // An empty range does not confirm our tip, but it is not
+                        // evidence of a conflicting chain or an invalid source.
+                        if let Some(p) = net.status.lock().unwrap().peers.get_mut(&peer) {
+                            p.tip = None;
+                        }
+                        deferred.insert(peer, Instant::now() + Duration::from_secs(10));
+                    }
+                    Err(error) if crate::network::is_backpressure(&error) => {
+                        tracing::debug!(%peer, %error, "sync request waiting for capacity");
+                        deferred.insert(peer, Instant::now() + Duration::from_secs(1));
                     }
                     Err(error) => {
                         tracing::warn!(%peer, %error, "sync source deferred");
@@ -108,7 +125,7 @@ pub async fn run(core: Arc<Core>, net: Network, data: PathBuf) -> Result<()> {
                         if let Some(p) = status.peers.get_mut(&peer) {
                             p.tip = None;
                         }
-                        failed.insert(peer, Instant::now());
+                        deferred.insert(peer, Instant::now() + Duration::from_secs(3));
                     }
                 }
             }
@@ -125,7 +142,7 @@ async fn follow(
     requested_floor: u64,
     records: Vec<noid_p2p::header_protocol::HeaderInventoryRecord>,
     snapshot: Option<ChainPoint>,
-) -> Result<()> {
+) -> Result<FollowOutcome> {
     let (local_height, local_hash, local_work, floor, store) = {
         let chain = core.chain.read().await;
         (
@@ -142,9 +159,19 @@ async fn follow(
     );
     let snapshot_ahead = snapshot.is_some_and(|point| point.height > local_height);
     if records.is_empty() && snapshot_ahead {
-        return snapshot_sync(core, net, peer, data).await;
+        snapshot_sync(core, net, peer, data).await?;
+        return Ok(FollowOutcome::Checked);
     }
-    ensure!(!records.is_empty(), "peer supplied no common header");
+    if records.is_empty() {
+        tracing::debug!(
+            %peer,
+            requested_floor,
+            local_height,
+            snapshot_height = snapshot.map(|point| point.height),
+            "peer returned an empty header range"
+        );
+        return Ok(FollowOutcome::NoHeaders);
+    }
     let mut ancestor = None;
     for (i, record) in records.iter().enumerate() {
         ensure!(
@@ -181,7 +208,7 @@ async fn follow(
                 }
             }
         }
-        return Ok(());
+        return Ok(FollowOutcome::Checked);
     }
     // A newer finalized snapshot is also advertised by peers when we are
     // already within their retained suffix. Follow those bodies directly;
@@ -193,7 +220,8 @@ async fn follow(
             .last()
             .is_some_and(|record| record.terminal.is_some());
     if !retained && snapshot_ahead {
-        return snapshot_sync(core, net, peer, data).await;
+        snapshot_sync(core, net, peer, data).await?;
+        return Ok(FollowOutcome::Checked);
     }
     ensure!(
         retained,
@@ -217,7 +245,7 @@ async fn follow(
         noid_chain::choose_chain_by_work(&work, &final_hash, &local_work, &local_hash),
         noid_chain::consensus::fork_choice::ChainChoice::A
     ) {
-        return Ok(());
+        return Ok(FollowOutcome::Checked);
     }
     ensure!(
         headers.len() <= noid_chain::consensus::params::RETAINED_BLOCK_SERVING_DEPTH as usize,
@@ -359,7 +387,7 @@ async fn follow(
         reorg = is_reorg,
         "verified canonical State advanced"
     );
-    Ok(())
+    Ok(FollowOutcome::Checked)
 }
 
 async fn snapshot_sync(

@@ -5,7 +5,9 @@ use noid_chain::BlockHeader;
 use noid_p2p::header_protocol::HeaderInventoryRecord;
 use noid_p2p::object_protocol::{ChainPoint, ObjectId};
 use noid_p2p::protocol::{GetStateSegmentResponse, VerifiedStateManifest};
-use noid_p2p::{NetworkCommand, NetworkCommandSender, NetworkEvent, NetworkEventReceiver};
+use noid_p2p::{
+    NetworkCommand, NetworkCommandSender, NetworkEvent, NetworkEventReceiver, RequestFailureKind,
+};
 use std::{
     collections::{BTreeMap, HashMap},
     sync::{
@@ -19,6 +21,33 @@ use tokio::sync::{oneshot, Notify};
 #[derive(Debug, thiserror::Error)]
 #[error("provider busy for {0} ms")]
 struct Busy(u16);
+
+pub(crate) fn is_backpressure(error: &anyhow::Error) -> bool {
+    error.downcast_ref::<Busy>().is_some()
+}
+
+fn request_failure(operation: &str, kind: RequestFailureKind) -> anyhow::Error {
+    if kind == RequestFailureKind::LocalCapacity {
+        // The native header path also maps a remote Busy reply to LocalCapacity.
+        // It does not preserve retry_after_ms, so use a bounded local delay.
+        Busy(500).into()
+    } else {
+        anyhow!("{operation}: {kind:?}")
+    }
+}
+
+fn snapshot_header_reply(headers: Vec<BlockHeader>, count: u16) -> Result<Vec<BlockHeader>> {
+    // Header protocol v4 encodes Busy as an empty successful response. This
+    // exact range belongs to an advertised snapshot, so retry it in place.
+    if headers.is_empty() && count > 0 {
+        return Err(Busy(500).into());
+    }
+    ensure!(
+        headers.len() == usize::from(count),
+        "incomplete snapshot header range"
+    );
+    Ok(headers)
+}
 
 async fn retry_busy<T, F, Fut>(mut operation: F) -> Result<T>
 where
@@ -333,6 +362,14 @@ impl Network {
         start: u64,
         count: u16,
     ) -> Result<(Vec<HeaderInventoryRecord>, Option<ChainPoint>)> {
+        retry_busy(|| self.inventory_once(peer, start, count)).await
+    }
+    async fn inventory_once(
+        &self,
+        peer: PeerId,
+        start: u64,
+        count: u16,
+    ) -> Result<(Vec<HeaderInventoryRecord>, Option<ChainPoint>)> {
         self.request(
             NetworkCommand::FetchHeaders {
                 peer,
@@ -353,7 +390,7 @@ impl Network {
                     count: received_count,
                     kind,
                 } if from == peer && start_height == start && received_count == count => {
-                    Some(Err(anyhow!("headers: {kind:?}")))
+                    Some(Err(request_failure("headers", kind)))
                 }
                 _ => None,
             },
@@ -361,6 +398,9 @@ impl Network {
         .await
     }
     pub async fn headers(&self, peer: PeerId, start: u64, count: u16) -> Result<Vec<BlockHeader>> {
+        retry_busy(|| self.headers_once(peer, start, count)).await
+    }
+    async fn headers_once(&self, peer: PeerId, start: u64, count: u16) -> Result<Vec<BlockHeader>> {
         let token = self.token();
         let generation = self.generation.load(Ordering::Relaxed);
         self.request(
@@ -386,7 +426,7 @@ impl Network {
                     && start_height == start
                     && requested_count == count =>
                 {
-                    Some(Ok(headers))
+                    Some(snapshot_header_reply(headers, count))
                 }
                 NetworkEvent::SnapshotHeadersRequestFailed {
                     from,
@@ -395,7 +435,7 @@ impl Network {
                     kind,
                     ..
                 } if from == peer && g == generation && t == token => {
-                    Some(Err(anyhow!("snapshot headers: {kind:?}")))
+                    Some(Err(request_failure("snapshot headers", kind)))
                 }
                 _ => None,
             },
@@ -634,29 +674,63 @@ impl Network {
 mod tests {
     use super::*;
     #[tokio::test]
+    async fn legacy_busy_preserves_an_exact_header_range() {
+        let header = noid_chain::consensus::genesis_header();
+        let mut attempts = 0;
+        let headers = retry_busy(|| {
+            attempts += 1;
+            std::future::ready(snapshot_header_reply(
+                if attempts == 1 {
+                    Vec::new()
+                } else {
+                    vec![header]
+                },
+                1,
+            ))
+        })
+        .await
+        .unwrap();
+        assert_eq!(headers, vec![header]);
+        assert_eq!(attempts, 2);
+        let truncated = snapshot_header_reply(vec![header], 2).unwrap_err();
+        assert!(!is_backpressure(&truncated));
+        assert!(snapshot_header_reply(vec![header; 2], 1).is_err());
+    }
+
+    #[tokio::test]
     async fn busy_wait_preserves_the_request_and_other_errors_are_final() {
         let mut attempts = 0;
         let started = Instant::now();
         let value = retry_busy(|| {
             attempts += 1;
-            std::future::ready(if attempts == 1 {
-                Err(Busy(150).into())
-            } else {
-                Ok(7)
+            std::future::ready(match attempts {
+                1 => Err(Busy(150).into()),
+                2 => Err(request_failure(
+                    "headers",
+                    RequestFailureKind::LocalCapacity,
+                )),
+                _ => Ok(7),
             })
         })
         .await
         .unwrap();
-        assert_eq!((value, attempts), (7, 2));
-        assert!(started.elapsed() >= Duration::from_millis(150));
-        let mut attempts = 0;
-        let result = retry_busy(|| {
-            attempts += 1;
-            std::future::ready(Err::<(), _>(anyhow!("invalid object")))
-        })
-        .await;
-        assert!(result.is_err());
-        assert_eq!(attempts, 1);
+        assert_eq!((value, attempts), (7, 3));
+        assert!(started.elapsed() >= Duration::from_millis(650));
+        for kind in [
+            RequestFailureKind::InvalidResponse,
+            RequestFailureKind::Unavailable,
+            RequestFailureKind::ConnectionClosed,
+        ] {
+            let mut attempts = 0;
+            let error = retry_busy(|| {
+                attempts += 1;
+                std::future::ready(Err::<(), _>(request_failure("headers", kind)))
+            })
+            .await
+            .unwrap_err();
+            assert!(!is_backpressure(&error));
+            assert_eq!(attempts, 1);
+        }
     }
     #[test]
     fn stale_generations_and_other_sources_have_no_response_owner() {
